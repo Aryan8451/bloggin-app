@@ -23,6 +23,7 @@ mongoose.connect("mongodb+srv://aryangoud120:H2hU7aBxX3Qq7BqD@cluster0.0bdi2rt.m
 )//
 app.use('/uploads',express.static(__dirname+'/uploads'))
 //for register posting endpoint
+
 app.post('/register', async (req, res) => {
    
   const { username, password } = req.body;
@@ -145,7 +146,7 @@ app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
 });
 
 
-
+ 
 
 app.get('/post',async (req,res)=>{
   const post = await PostM.find().populate('author',['username']).sort({createdAt:-1}).limit(20)
