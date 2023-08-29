@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 const cookieParser=require('cookie-parser')
 const multer =require('multer')
 const fs = require('fs')
+const path =require('path')
 const uploadMiddleware = multer({ dest: 'uploads/' })
 
 const secretKey= 'asjhafdiuadkjfkiudhfsdf43rrwe434'
@@ -22,6 +23,11 @@ app.use(cookieParser())
 mongoose.connect("mongodb+srv://aryangoud120:H2hU7aBxX3Qq7BqD@cluster0.0bdi2rt.mongodb.net/"
 )//
 app.use('/uploads',express.static(__dirname+'/uploads'))
+app.use(express.static(path.join(__dirname,'../client/build')))
+
+app.get('*',function(req,res){
+  res.sendFile(path.join(__dirname,'../client/build/index.html'))
+})
 //for register posting endpoint
 
 app.post('/register', async (req, res) => {
