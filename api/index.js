@@ -17,7 +17,7 @@ const salt = bcrypt.genSaltSync(10);
 
 
 const app = express();
-app.use(cors({credentials:true,origin:"http://localhost:3000"}));
+app.use(cors({credentials:true,origin:"http://localhost:4000"}));
 app.use(express.json());
 app.use(cookieParser())
 mongoose.connect("mongodb+srv://aryangoud120:H2hU7aBxX3Qq7BqD@cluster0.0bdi2rt.mongodb.net/"
